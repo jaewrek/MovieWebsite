@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Jerrik's FAVORITE Movies!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JMiFsFQcFLE" data-toggle="modal" data-target="#trailer">
+    <img src="http://resizing.flixster.com/ep6MeG-pa6yqG4fr50-UKURFD9Q=/800x1200/v1.bTsxMTE2OTc2NDtqOzE3MTM4OzIwNDg7ODAwOzEyMDA" width="220" height="342">
+    <h2>Rush Hour 1998</h2>
+    <h4>Rated PG-13, 98 minutes</h4>
+    <h6>Starring Jackie Chan & Chris Tucker</h6>
+    <h6>An LAPD officer and Hong Kong Detective come together to bring down a Chinese Druglord.</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="RhFMIRuHAL41" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.korsgaardscommentary.com/wp-content/uploads/2016/07/warcraft-movie-poster.jpg" width="220" height="342">
+    <h2>Warcraft 2016</h2>
+    <h4>Rated PG-13, 123 minutes</h4>
+    <h6>Starring Toby Kebbel & Daniel Wu</h6>
+    <h6>A tale of two races from two separate worlds clashing together for survival.</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5iaYLCiq5RM" data-toggle="modal" data-target="#trailer">
+    <img src="http://66.media.tumblr.com/tumblr_m8itmy8AOF1raij5vo1_1280.jpg" width="220" height="342">
+    <h2>Shutter Island 2010</h2>
+    <h4>Rated R, 138 minutes</h4>
+    <h6>Starring Leonardo DiCaprio</h6>
+    <h6>A rookie CIA detective is sent to Shutter Island to investigate a missing pateint.</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="PaZVjZEFkRs" data-toggle="modal" data-target="#trailer">
+    <img src="http://cdn.miramax.com/media/assets/726_GoodWillHunting_Catalog_Poster-BB_v2_Approved.png" width="220" height="342">
+    <h2>Good Will Hunting 1997</h2>
+    <h4>Rated R, 126 minutes</h4>
+    <h6>Starring Matt Damon, Ben Affleck, & Robin Williams</h6>
+    <h6>A young misguided youth with genius-level IQ battle the problems of his past while trying to move forward into his new life of opportunity.</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="6htYeILov58" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/DebutDVDcoverfinal.jpg/220px-DebutDVDcoverfinal.jpg" width="220" height="342">
+    <h2>The Debut 2001</h2>
+    <h4>Rated R, 94 minutes</h4>
+    <h6>Starring Dante Basco, Joy Bisco, & Eddie Garcia</h6>
+    <h6>A high school Filipino-American teen struggles with the cultural clash between his family and fitting in with his friends.</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="quuMv7cGUn0" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/62/Eternal_sunshine_of_the_spotless_mind_ver3.jpg" width="220" height="342">
+    <h2>Eternal Sunshine of the Spotless Mind 2004</h2>
+    <h4>Rated R, 108 minutes</h4>
+    <h6>Starring Jim Carey</h6>
+    <h6>After a sudden break up a man attempts to erase his mind.</h6>
+</div>
+ 
+    </div>
+  </body>
+</html>
